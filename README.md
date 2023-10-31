@@ -252,10 +252,10 @@ $ transfer hello.txt
 ```
 
 
-### Bash and zsh (with delete url, delete token output and prompt before uploading)
-##### Add this to .bashrc or .zshrc or its equivalent
+### Bash y zsh (con delete url, delete token output y prompt before uploading)
+##### Agregue esto a .bashrc o .zshrc o su equivalente
 
-<details><summary>Expand</summary><p>
+<details><summary>Ampliar</summary><p>
 
 ```bash
 transfer()
