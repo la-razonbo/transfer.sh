@@ -266,31 +266,31 @@ transfer()
 
     if [[ "${file_array[@]}" == "" || "${1}" == "--help" || "${1}" == "-h" ]]
     then
-        echo "${0} - Upload arbitrary files to \"transfer.sh\"."
+        echo "${0} - Cargar archivos arbitrarios en \"transfer.sh\"."
         echo ""
         echo "Usage: ${0} [options] [<file>]..."
         echo ""
-        echo "OPTIONS:"
+        echo "OPCIONES:"
         echo "  -h, --help"
-        echo "      show this message"
+        echo "      muestra este mensaje"
         echo ""
-        echo "EXAMPLES:"
-        echo "  Upload a single file from the current working directory:"
+        echo "EJEMPLOS:"
+        echo "  Cargar un solo archivo desde el directorio de trabajo actual:"
         echo "      ${0} \"image.img\""
         echo ""
-        echo "  Upload multiple files from the current working directory:"
+        echo "  Cargar varios archivos desde el directorio de trabajo actual:"
         echo "      ${0} \"image.img\" \"image2.img\""
         echo ""
-        echo "  Upload a file from a different directory:"
+        echo "  Cargar un archivo desde un directorio diferente:"
         echo "      ${0} \"/tmp/some_file\""
         echo ""
-        echo "  Upload all files from the current working directory. Be aware of the webserver's rate limiting!:"
+        echo "  Cargue todos los archivos desde el directorio de trabajo actual. Tenga en cuenta la limitación de velocidad del servidor web!:"
         echo "      ${0} *"
         echo ""
-        echo "  Upload a single file from the current working directory and filter out the delete token and download link:"
-        echo "      ${0} \"image.img\" | awk --field-separator=\": \" '/Delete token:/ { print \$2 } /Download link:/ { print \$2 }'"
+        echo "  Cargar un único archivo desde el directorio de trabajo actual y filtrar el token de borrado y el enlace de descarga:"
+        echo "      ${0} \"image.img\" | awk --field-separator=\": \" '/Borrar token:/ { print \$2 } /Enlace de descarga:/ { print \$2 }'"
         echo ""
-        echo "  Show help text from \"transfer.sh\":"
+        echo "  Mostrar texto de ayuda de \"transfer.sh\":"
         echo "      curl --request GET \"https://transfer.sh\""
         return 0
     else
@@ -298,7 +298,7 @@ transfer()
         do
             if [[ ! -f "${file}" ]]
             then
-                echo -e "\e[01;31m'${file}' could not be found or is not a file.\e[0m" >&2
+                echo -e "\e[01;31m'${file}' no se ha encontrado o no es un archivo.\e[0m" >&2
                 return 1
             fi
         done
@@ -313,10 +313,10 @@ transfer()
     # be compatible with "bash"
     if [[ "${ZSH_NAME}" == "zsh" ]]
     then
-        read $'upload_files?\e[01;31mDo you really want to upload the above files ('"${#file_array[@]}"$') to "transfer.sh"? (Y/n): \e[0m'
+        read $'upload_files?\e[01;31mRealmente quieres subir los archivos anteriores ('"${#file_array[@]}"$') a "transfer.sh"? (Y/n): \e[0m'
     elif [[ "${BASH}" == *"bash"* ]]
     then
-        read -p $'\e[01;31mDo you really want to upload the above files ('"${#file_array[@]}"$') to "transfer.sh"? (Y/n): \e[0m' upload_files
+        read -p $'\e[01;31mRealmente quieres subir los archivos anteriores ('"${#file_array[@]}"$') a "transfer.sh"? (Y/n): \e[0m' upload_files
     fi
 
     case "${upload_files:-y}" in
@@ -364,7 +364,7 @@ transfer()
             ;;
 
         *)
-            echo -e "\e[01;31mWrong input: '${upload_files}'.\e[0m" >&2
+            echo -e "\e[01;31mEntrada incorrecta: '${upload_files}'.\e[0m" >&2
             return 1
     esac
 }
