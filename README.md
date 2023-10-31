@@ -337,15 +337,15 @@ transfer()
                     'gsub("\r", "", $0) && tolower($1) ~ /x-url-delete/ \
                     {
                         delete_link=$2;
-                        print "Delete command: curl --request DELETE " "\""delete_link"\"";
+                        print "Comando para eliminar: curl --request DELETE " "\""delete_link"\"";
 
                         gsub(".*/", "", delete_link);
                         delete_token=delete_link;
-                        print "Delete token: " delete_token;
+                        print "Token para eliminar: " delete_token;
                     }
 
                     END{
-                        print "Download link: " $0;
+                        print "Link de descarga: " $0;
                     }' <<< "${curl_output}")
 
                 # return the results via "stdout", "awk" does not do this for some reason.
