@@ -337,11 +337,11 @@ transfer()
                     'gsub("\r", "", $0) && tolower($1) ~ /x-url-delete/ \
                     {
                         delete_link=$2;
-                        print "Comando para eliminar: curl --request DELETE " "\""delete_link"\"";
+                        print "Para eliminar: curl --request DELETE " "\""delete_link"\"";
 
                         gsub(".*/", "", delete_link);
                         delete_token=delete_link;
-                        print "Token para eliminar: " delete_token;
+                        print "Token eliminador: " delete_token;
                     }
 
                     END{
